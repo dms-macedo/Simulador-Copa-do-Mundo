@@ -1,18 +1,30 @@
-<h1>Satisfações:</h1>
-- O Sistema é feito com a linguagem Java PURA.
-- Feito com base nos conhecimentos atuais que tenho, adquiridos no Curso "Maratona Java - Virado no Jiraya" do DevDojo no YouTube.
-- Ainda não concluí o curso, estou na metade dele, por este fato, o sistema é moldado em torno de muita Orientação a Objetos, Exceptions e Classes Utilitárias.
-- Não sou profissional, muito menos esse projeto, ele é feito exclusivamente para aprendizado e treino de Lógica do Java, quaisquer críticas e dicas são bem vindas, basta me contatar nas minhas redes (Link na bio).
+# Satisfações e Considerações Iniciais
 
-<h1>Sobre IA no Desenvolvimento:</h1>
-- a IA se faz presente neste projeto, não é possível negar este fato.
-- Uso ela no decorrer do Desenvolvimento para tirar dúvidas, corrigir erros, identificar bugs e falhas de segurança e além do mais uso ela para dicas do que deve ser feito no projeto com base nas minhas ideias passadas.
-- É usada também para gerar tabelas onde mostro informações gerais (Fase de Grupos, Grupos, Fase Eliminatória e mais).
-- A lógica e código do projeto é feito 100% manualmente, e o que a IA identifica de erros, bugs e falhas, peço para ela me explicar detalhadamente tais ocorridos e como posso resolve-los, assim eu treino lógica, segurança e aprendo mais ainda com tais explicações, além dos demais cursos que assisto.
+* **Linguagem:** O sistema foi desenvolvido utilizando a linguagem **Java Pura**.
 
-<hr>
-<footer>
-  <p>Ainda em DESENVOLVIMENTO</p>
-  <p>README Completo do projeto em breve.</p>
-  <p>Feito com carinho, por: Davi Macedo</p>
-</footer>
+* **Base de Conhecimento:** O projeto foi construído com base nos conhecimentos adquiridos no curso *"Maratona Java - Virado no Jiraya"*, do canal DevDojo (YouTube).
+
+* **Arquitetura:** Como ainda estou cursando a metade do treinamento, a estrutura do sistema é fortemente moldada em torno de pilares como **Orientação a Objetos**, **Tratamento de Exceções (Exceptions)** e o uso de **Classes Utilitárias**.
+
+* **Objetivo do Projeto:** Este não é um sistema profissional. Ele foi criado exclusivamente para o meu aprendizado, fixação de conceitos e treinamento de lógica de programação em Java.
+
+* **Feedback:** Quaisquer críticas construtivas e dicas de melhoria são muito bem-vindas. Basta entrar em contato através das minhas redes sociais (link na bio).
+
+## Sobre o uso de IA no Desenvolvimento
+
+A Inteligência Artificial se faz presente como ferramenta de apoio durante a construção deste projeto, atuando sob as seguintes diretrizes de estudo:
+
+* **Código Autoral:** A construção da lógica e a digitação de todo o código são feitas **100% manualmente** por mim.
+
+* **Mentoria e Correção:** Quando a IA identifica erros, bugs ou falhas de arquitetura no meu código, utilizo a ferramenta para me explicar detalhadamente as causas e as melhores formas de resolução. Essa abordagem complementa meus estudos, melhorando minha visão sobre lógica de programação e boas práticas.
+
+* **Consultoria Técnica:** A IA atua tirando dúvidas e fornecendo dicas de estruturação estritamente baseadas nas lógicas e ideias que eu proponho previamente.
+
+* **Apoio Visual (Console):** Utilizo a ferramenta para auxiliar na formatação de tabelas e na organização das informações textuais impressas no console (como exibições da Fase de Grupos e visualização do Mata-Mata).
+
+---
+
+**Status do Projeto:** Ainda em DESENVOLVIMENTO.
+*(Um README completo detalhando a estrutura e o uso do sistema será disponibilizado em breve).*
+
+Desenvolvido por **Davi Macedo**.
