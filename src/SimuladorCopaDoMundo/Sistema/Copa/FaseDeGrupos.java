@@ -2,10 +2,12 @@ package SimuladorCopaDoMundo.Sistema.Copa;
 
 import SimuladorCopaDoMundo.Sistema.Copa.Classes.Selecao;
 import SimuladorCopaDoMundo.Sistema.exceptions.SelecoesException;
+import SimuladorCopaDoMundo.Sistema.interfaces.Ranking;
+import SimuladorCopaDoMundo.Sistema.interfaces.Verifieds;
 
 import java.util.Random;
 
-public class FaseDeGrupos {
+public class FaseDeGrupos implements Verifieds, Ranking {
     private final Random random = new Random();
     
     private final Selecao[][] grupos = new Selecao[12][4];
@@ -24,34 +26,8 @@ public class FaseDeGrupos {
     private boolean isResultadosSimulados = false;
     private boolean isPtsSaldoGolsVEDistribuidos = false;
 
-    private void nullListSelecoesVerified(Selecao[] lista){
-        int counterSelecaoExists = 0;
-        int counterSelecaoNull = 0;
-
-        for (Selecao selecao : lista) {
-            if (selecao == null) {
-                counterSelecaoNull++;
-                continue;
-            }
-
-            counterSelecaoExists++;
-        }
-
-        if (counterSelecaoNull > 0) {
-            throw new SelecoesException("A lista de seleções está incompleta. (" + counterSelecaoExists + "/" + lista.length + ")");
-        } else if (counterSelecaoNull < 0) {
-            throw new SelecoesException("A lista de seleções não pode ser negativa.");
-        }
-    }
-
-    private void nullListGruposVerified(Selecao[][] grupos) {
-        for (Selecao[] grupo : grupos) {
-            nullListSelecoesVerified(grupo);
-        }
-    }
-
     private void calcularRanking(Selecao[] lista){
-        nullListSelecoesVerified(lista);
+        nullListVerified(lista);
 
         for (int i = 0; i < lista.length; i++) {
             for(int k = 0; k < lista.length - 1; k++){
@@ -76,16 +52,14 @@ public class FaseDeGrupos {
                 }
 
                 if (isTrocarDeLugar){
-                    Selecao selecaoTemp = lista[k];
-                    lista[k] = lista[k + 1];
-                    lista[k + 1] = selecaoTemp;
+                    bubbleSort(lista);
                 }
             }
         }
     }
 
-    private void distribuirSelecoesPorGrupo(Selecao[] lista){
-        nullListSelecoesVerified(lista);
+    protected void distribuirSelecoesPorGrupo(Selecao[] lista){
+        nullListVerified(lista);
 
         int counterSelecao = 0;
 
@@ -99,10 +73,10 @@ public class FaseDeGrupos {
         this.isSelecoesDistribuidas = true;
     }
 
-    private void criarPartidas(){
+    protected void criarPartidas(){
         if (this.isSelecoesDistribuidas){
             Selecao[][] grupos = this.grupos;
-            nullListGruposVerified(grupos);
+            nullListBiDirecionalVerified(grupos);
 
             int counterJogos = 0;
             for (int i = 0; i <grupos.length; i++) {
@@ -122,7 +96,7 @@ public class FaseDeGrupos {
         throw new SelecoesException("É necessário distribuir as seleções por grupo primeiro.");
     }
 
-    private void simularResultados(){
+    protected void simularResultados(){
         if (isPartidasCriadas){
             for (int i = 0; i < this.placaresFaseDeGrupos.length; i++) {
                 int ResultadoSelecaoEsq = random.nextInt(11);
@@ -139,7 +113,7 @@ public class FaseDeGrupos {
         throw new SelecoesException("É necessário criar as partidas primeiro.");
     }
 
-    private void distribuirPontosSaldoGolsVED(){
+    protected void distribuirPontosSaldoGolsVED(){
         if (isResultadosSimulados){
             for (int i = 0; i < this.placaresFaseDeGrupos.length; i++) {
                 int ResultadoSelecaoEsq = this.placaresFaseDeGrupos[i][0];
@@ -191,7 +165,7 @@ public class FaseDeGrupos {
         return listaRepescagem;
     }
 
-    private void distribuirResultadosFinaisGrupos(){
+    protected void distribuirResultadosFinaisGrupos(){
         for(Selecao[] grupo : this.grupos){
             calcularRanking(grupo);
         }
@@ -223,10 +197,6 @@ public class FaseDeGrupos {
         }
 
         throw new SelecoesException("É necessário distribuir pontos, saldo de gols, gols marcados, vitórias, derrotas e empates primeiro.");
-    }
-
-    public void simularFaseDeGrupos(){
-        //Proximo passo.
     }
 
     public Selecao[][] getGrupos() {

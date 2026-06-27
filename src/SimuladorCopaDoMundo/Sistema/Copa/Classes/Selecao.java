@@ -2,8 +2,10 @@ package SimuladorCopaDoMundo.Sistema.Copa.Classes;
 
 import SimuladorCopaDoMundo.Sistema.Copa.CopaDoMundo;
 import SimuladorCopaDoMundo.Sistema.enums.Continente;
+import SimuladorCopaDoMundo.Sistema.interfaces.Ranking;
+import SimuladorCopaDoMundo.Sistema.interfaces.Verifieds;
 
-public class Selecao {
+public class Selecao implements Verifieds, Ranking {
     private String nome;
     private Jogador[] jogadores = new Jogador[26];
     private Tecnico tecnico;
@@ -15,13 +17,30 @@ public class Selecao {
     protected int pontos;
     protected int saldoDeGols;
     protected int golsMarcados;
+    private Jogador[] timeTitular;
 
-    public Selecao(String nome, Jogador[] jogadores, Tecnico tecnico, Continente continente, CopaDoMundo copa) {
+
+    public Selecao(String nome, Tecnico tecnico, Continente continente, CopaDoMundo copa) {
         this.nome = nome;
-        this.jogadores = jogadores;
         this.tecnico = tecnico;
         this.continente = continente;
         this.copa = copa;
+    }
+
+    public void registrarJogador(Jogador jogador){
+
+    }
+
+    public void calcularRankingJogadores(){
+        nullListVerified(jogadores);
+
+        for(int i = 0; i < jogadores.length; i++){
+            for(int k = 0; k < jogadores.length - 1; i++){
+                if (jogadores[k].getNivelForca() < jogadores[k + 1].getNivelForca()){
+                    replace(jogadores, k, k + 1);
+                }
+            }
+        }
     }
 
     public String getNome() {
